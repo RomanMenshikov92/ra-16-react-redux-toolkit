@@ -1,57 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import './App.css';
+import { Route, Routes } from "react-router-dom";
+import SearchPage from "./pages/SearchPage";
+import MoviePage from "./pages/MoviePage";
+import FavoritePage from "./pages/FavoritePage";
+import { Layout } from "./layout/Layout";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.css";
 
-function App() {
+function App(): JSX.Element {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
-    </div>
+    <Routes>
+      <Route path="/ra-16-react-redux-toolkit/" element={<Layout />}>
+        <Route index path="/ra-16-react-redux-toolkit/search" element={<SearchPage />} />
+        <Route path="/ra-16-react-redux-toolkit/movie/" element={<MoviePage />}>
+          <Route path="/ra-16-react-redux-toolkit/movie/:id" element={<MoviePage />} />
+        </Route>
+        <Route path="/ra-16-react-redux-toolkit/favorites" element={<FavoritePage />} />
+      </Route>
+    </Routes>
   );
 }
 

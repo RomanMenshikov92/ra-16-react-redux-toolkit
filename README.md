@@ -1,46 +1,159 @@
-# Getting Started with Create React App
+# Redux Toolkit
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) TS template.
+<!-- [![Appveyor Build status](https://ci.appveyor.com/api/projects/status/dji5s77b70aa8rji?svg=true)](https://ci.appveyor.com/project/RomanMenshikov92/ra-16-react-redux)
 
-## Available Scripts
+[![Pages build status](https://github.com/RomanMenshikov92/ra-16-react-redux/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/RomanMenshikov92/ra-16-react-redux/actions/workflows/pages/pages-build-deployment)
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## [GutHub Pages](https://romanmenshikov92.github.io/ra-16-react-redux-toolkit/) -->
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Задание: Поиск фильмов по каталогу IMDb и добавление найденных фильмов в "Избранное"
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Цель задания
 
-### `npm test`
+1. Научиться работать с пакетом Redux Toolkit.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Ключи для API:
 
-### `npm run build`
+- 64405bd2
+- 9713c5e7
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Либо вы можете зарегистрировать свой ключ для API.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Оформление на Ваш вкус. Допускает использование UI фреймворков, например React-Bootstrap, Ant Design, Prime
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Инструкция к заданию
 
-### `npm run eject`
+1. Изучить стороннее [API](https://www.omdbapi.com/).
+2. Создать роуты для поиска фильма (главный роут), просмотра карточки фильма, избранного.
+3. Реализовать компоненты для поиска, отображения найденных фильмов, карточку одного фильма с его описанием.
+4. При вводе фильма в строку поиска отправить запрос к API. Во время запроса показать прелодер.
+   После успешного получения ответа убрать прелодер, показать фильмы, если таковы были найдены. Если результат
+   отрицательный, показать плашку, что фильмы не найдены.
+5. Любой из найденный фильмов можно добавить в "Избранное". При переключении на вкладку "Избранное" показывать фильмы,
+   которые были туда добавлены. Любой фильм можно удалить из "Избранного".
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Пример ответа при поиске фильма:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```json
+{
+  "Search": [
+    {
+      "Title": "Terminator 2: Judgment Day",
+      "Year": "1991",
+      "imdbID": "tt0103064",
+      "Type": "movie",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BMGU2NzRmZjUtOGUxYS00ZjdjLWEwZWItY2NlM2JhNjkxNTFmXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SX300.jpg"
+    },
+    {
+      "Title": "The Terminator",
+      "Year": "1984",
+      "imdbID": "tt0088247",
+      "Type": "movie",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BYTViNzMxZjEtZGEwNy00MDNiLWIzNGQtZDY2MjQ1OWViZjFmXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg"
+    },
+    {
+      "Title": "Lady Terminator",
+      "Year": "1989",
+      "imdbID": "tt0095483",
+      "Type": "movie",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BMTg5NTA1NzEtNWNiNy00ZTc4LWJhZTgtYmJkODZhYWI3NmQ4XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg"
+    }
+  ],
+  "totalResults": "124",
+  "Response": "True"
+}
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Пример ответа при запросе фильма по идентификатору:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```json
+{
+  "Title": "Terminator 2: Judgment Day",
+  "Year": "1991",
+  "Rated": "R",
+  "Released": "03 Jul 1991",
+  "Runtime": "137 min",
+  "Genre": "Action, Sci-Fi",
+  "Director": "James Cameron",
+  "Writer": "James Cameron, William Wisher",
+  "Actors": "Arnold Schwarzenegger, Linda Hamilton, Edward Furlong",
+  "Plot": "A cyborg, identical to the one who failed to kill Sarah Connor, must now protect her 10-year old son John from an even more advanced and powerful cyborg.",
+  "Language": "English, Spanish",
+  "Country": "United States",
+  "Awards": "Won 4 Oscars. 37 wins & 33 nominations total",
+  "Poster": "https://m.media-amazon.com/images/M/MV5BMGU2NzRmZjUtOGUxYS00ZjdjLWEwZWItY2NlM2JhNjkxNTFmXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SX300.jpg",
+  "Ratings": [
+    {
+      "Source": "Internet Movie Database",
+      "Value": "8.6/10"
+    },
+    {
+      "Source": "Rotten Tomatoes",
+      "Value": "92%"
+    },
+    {
+      "Source": "Metacritic",
+      "Value": "75/100"
+    }
+  ],
+  "Metascore": "75",
+  "imdbRating": "8.6",
+  "imdbVotes": "1,114,693",
+  "imdbID": "tt0103064",
+  "Type": "movie",
+  "DVD": "13 Feb 2007",
+  "BoxOffice": "$205,881,154",
+  "Production": "N/A",
+  "Website": "N/A",
+  "Response": "True"
+}
+```
 
-## Learn More
+6. Поля которые необходимо вывести в карточке товара:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
++ постер фильма(Poster)
++ название фильма(Title)
++ год выпуска(Year)
++ жанр(Genre)
++ продолжительность(Runtime)
++ режиссер(Director)
++ актеры(Actors)
++ рейтинг фильма(imdbRating)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Повышенный уровень сложности (не обязательно)
+
+Реализовать задачу на TypeScript.
+
+### Подсказки (спойлеры)
+
+<details>
+<summary>Примеры запросов</summary>
+
+1. `https://www.omdbapi.com?apikey=64405bd2&s=terminator` - запрос на поиск фильма
+2. `https://www.omdbapi.com?apikey=64405bd2&i=tt0103064` - поиск фильма по id
+
+</details>
+
+### Критерии оценки
+
+1. Можно использовать любой пакетный менеджер.
+2. Авто-тесты писать не требуется, но можно.
+3. Использован Redux Toolkit.
+4. (*необязательный пункт*) Асинхронные запросы к API должны быть реализованы через Redux Thunk. Чтобы ознакомиться с Redux Thunk, посмотрите [документацию](https://redux.js.org/usage/writing-logic-thunks), [Redux на github](https://github.com/reduxjs/redux-thunk).
+5. Должна быть реализована настройка хранилища.
+6. Нет ошибок ESLint.
+
+#### Альтернативный способ создания приложения React с использованием тулинга Vite
+
+Приложение также можно создать используя инструмент Vite.
+Документация по созданию приложения [React](https://vitejs.dev/guide/).
+
+1. Откройте терминал и пропишите следующую команду: `yarn create vite my-app --template react`,
+   либо `yarn create vite my-app --template react-ts`, если
+   нужен шаблон с TypeScript. Эта команда создаст настроенный
+   шаблонный проект.
+2. Откройте созданный проект в своей IDE.
+3. Установите зависимости.
+4. Готово. Чтобы запустить приложение, введите команду: `yarn dev`(либо `npm run dev`).

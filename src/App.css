@@ -1,39 +1,55 @@
-.App {
-  text-align: center;
+@import url(https://fonts.googleapis.com/css?family=Muli:400,300italic,300,400italic);
+
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body,
+html {
+  margin: 0;
+  font-family: muli;
+  height: 100%;
+  padding: 0;
+  overflow-x: hidden;
+  background-color: rgb(255, 255, 255);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-float infinite 3s ease-in-out;
-  }
+h1,
+h2,
+h3 {
+  margin: 0;
 }
 
-.App-header {
-  min-height: 100vh;
+#root {
   display: flex;
+  justify-content: center;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
 }
 
-.App-link {
-  color: rgb(112, 76, 182);
+.arrow {
+  color: white;
+  animation: bounce 2s infinite;
+  -webkit-animation: bounce 2s infinite;
+  background-color: #198754;
 }
 
-@keyframes App-logo-float {
+@keyframes bounce {
   0% {
-    transform: translateY(0);
+    transform: translateY(0px);
   }
   50% {
-    transform: translateY(10px);
+    transform: translateY(-10px);
   }
   100% {
     transform: translateY(0px);
   }
+}
+
+.visited {
+  color: blue;
+  background-color: #ffc107;
 }
