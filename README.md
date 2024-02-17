@@ -1,12 +1,12 @@
 # Redux Toolkit
 
-<!-- [![Appveyor Build status](https://ci.appveyor.com/api/projects/status/dji5s77b70aa8rji?svg=true)](https://ci.appveyor.com/project/RomanMenshikov92/ra-16-react-redux)
+[![Appveyor Build status](https://ci.appveyor.com/api/projects/status/m11nngqlqotllv70?svg=true)](https://ci.appveyor.com/project/RomanMenshikov92/ra-16-react-redux-toolkit)
 
-[![Pages build status](https://github.com/RomanMenshikov92/ra-16-react-redux/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/RomanMenshikov92/ra-16-react-redux/actions/workflows/pages/pages-build-deployment)
+[![Pages build status](https://github.com/RomanMenshikov92/ra-16-react-redux-toolkit/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/RomanMenshikov92/ra-16-react-redux-toolkit/actions/workflows/pages/pages-build-deployment)
 
 ---
 
-## [GutHub Pages](https://romanmenshikov92.github.io/ra-16-react-redux-toolkit/) -->
+## [GutHub Pages](https://romanmenshikov92.github.io/ra-16-react-redux-toolkit/)
 
 ### Задание: Поиск фильмов по каталогу IMDb и добавление найденных фильмов в "Избранное"
 
